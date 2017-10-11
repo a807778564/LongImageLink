@@ -11,6 +11,8 @@
 		2C494EBF1F8C8D9600034BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C494EBE1F8C8D9600034BB4 /* Assets.xcassets */; };
 		2C494EC21F8C8D9600034BB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C494EC01F8C8D9600034BB4 /* LaunchScreen.storyboard */; };
 		2C494EF51F8C95BB00034BB4 /* LLMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C494EF41F8C95BB00034BB4 /* LLMainController.m */; };
+		2C7C910D1F8E0FD6009591A5 /* CTAssetsPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2CF9F5491F8CB47E004DE18F /* CTAssetsPickerController.bundle */; };
+		2C7C910E1F8E13AD009591A5 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2CF9F55C1F8CC438004DE18F /* SVProgressHUD.bundle */; };
 		2CF9F5701F8CC44D004DE18F /* M80ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF9F56F1F8CC44D004DE18F /* M80ImageViewController.m */; };
 		2CF9F5871F8CC50C004DE18F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF9F5861F8CC50C004DE18F /* libz.tbd */; };
 		2CF9F5891F8CC516004DE18F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF9F5881F8CC516004DE18F /* Foundation.framework */; };
@@ -631,6 +633,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7C910E1F8E13AD009591A5 /* SVProgressHUD.bundle in Resources */,
+				2C7C910D1F8E0FD6009591A5 /* CTAssetsPickerController.bundle in Resources */,
 				2C494EC21F8C8D9600034BB4 /* LaunchScreen.storyboard in Resources */,
 				2C494EBF1F8C8D9600034BB4 /* Assets.xcassets in Resources */,
 				2C494EBD1F8C8D9600034BB4 /* Main.storyboard in Resources */,
