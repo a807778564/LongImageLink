@@ -1,0 +1,16 @@
+//
+//  LongImageLink-Prefix.pch
+//  LongImageLink
+//
+//  Created by huangrensheng on 2017/10/10.
+//  Copyright © 2017年 laber. All rights reserved.
+//
+
+#ifndef LongImageLink_Prefix_pch
+#define LongImageLink_Prefix_pch
+#import "Masonry.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* LongImageLink_Prefix_pch */
