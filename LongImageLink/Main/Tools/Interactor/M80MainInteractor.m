@@ -14,12 +14,13 @@
 @import Photos;
 
 
-typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
+typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error,NSMutableArray *images,NSMutableArray *postionArray);
 
 
 @interface M80MainInteractor ()<M80RecentImageFinderDelegate,CTAssetsPickerControllerDelegate>
 @property (nonatomic,strong) dispatch_queue_t queue;
 @property (nonatomic,strong) M80RecentImageFinder *finder;
+@property (nonatomic, strong) NSMutableArray *imagesArray;
 @end
 
 @implementation M80MainInteractor
@@ -31,6 +32,7 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
         _queue = dispatch_queue_create("com.xiangwangfeng.image.queue", 0);
         _finder = [[M80RecentImageFinder alloc] init];
         _finder.delegate = self;
+        self.imagesArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -66,11 +68,12 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
                                completion:^{
                                    
                                    [self mergeImages:assets
-                                          completion:^(UIImage *image, NSError *error) {
-                                              
+                                          completion:^(UIImage *image, NSError *error, NSMutableArray *images, NSMutableArray *postionArray) {
                                               M80MergeResult *result = [M80MergeResult resultBy:image
                                                                                           error:error
                                                                                          assets:assets];
+                                              result.imagesArray = images;
+                                              result.imagesPostion = postionArray;
                                               [self.delegate showResult:result];
                                           }];
                                    
@@ -96,6 +99,7 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
         dispatch_async(_queue, ^{
             
             M80ImageGenerator *generator = [self imageGeneratorBy:assets];
+            NSMutableArray *infosArray = [generator.infos mutableCopy];
             UIImage *image = [generator generate];
             NSError *error = [generator error];
             
@@ -104,9 +108,9 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
                 [self.delegate mergeEnd];
                 
                 if (completion) {
-                    completion(image,error);
+                    completion(image,error,self.imagesArray,infosArray);
+                    [self.imagesArray removeAllObjects];
                 }
-                
             });
         });
     }
@@ -115,7 +119,8 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
         if (completion) {
             completion(nil,[NSError errorWithDomain:M80ERRORDOMAIN
                                                code:M80MergeErrorNotSameWidth
-                                           userInfo:Nil]);
+                                           userInfo:Nil],self.imagesArray,nil);
+            [self.imagesArray removeAllObjects];
         }
     }
 }
@@ -133,6 +138,9 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
                                                           options:options
                                                     resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
                                                         UIImage *image = [[UIImage alloc] initWithData:imageData];
+                                                        if (![self.imagesArray containsObject:image]) {
+                                                            [self.imagesArray addObject:image];
+                                                        }
                                                         [generator feedImage:image];
                                                     }];
     }
@@ -174,12 +182,14 @@ typedef void(^M80ImageMergeBlock)(UIImage *image,NSError *error);
 - (void)onFindRecentImages:(NSArray *)images
 {
     [self mergeImages:images
-           completion:^(UIImage *image, NSError *error) {
+           completion:^(UIImage *image, NSError *error, NSMutableArray *images, NSMutableArray *postionArray) {
                if (error == nil && image)
                {
                    M80MergeResult *result = [M80MergeResult resultBy:image
                                                                error:error
                                                               assets:images];
+                   result.imagesArray = images;
+                   result.imagesPostion = postionArray;
                    [self.delegate showResult:result];
                }
            }];

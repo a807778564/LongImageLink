@@ -13,7 +13,6 @@
 
 @interface M80ImageGenerator ()
 @property (nonatomic,strong)    UIImage *firstImage;
-@property (nonatomic,strong)    NSMutableArray *infos;
 @end
 
 @implementation M80ImageGenerator

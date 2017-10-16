@@ -11,6 +11,8 @@
 
 @interface M80MergeResult : NSObject
 @property (nonatomic,strong)    UIImage             *image;
+@property (nonatomic, strong) NSMutableArray *imagesArray;
+@property (nonatomic, strong) NSMutableArray *imagesPostion;
 @property (nonatomic,copy)      dispatch_block_t    completion;
 @property (nonatomic,strong)    NSError             *error;
 

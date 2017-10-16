@@ -18,7 +18,7 @@ typedef enum : NSUInteger {
 
 @interface M80ImageGenerator : NSObject
 @property (nonatomic,strong)    NSError *error;
-
+@property (nonatomic,strong)    NSMutableArray *infos;
 - (BOOL)feedImage:(UIImage *)image;
 - (BOOL)feedImages:(NSArray *)images;
 

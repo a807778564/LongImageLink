@@ -115,6 +115,7 @@
 		2C494EEF1F8C93D700034BB4 /* LongImageLink-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LongImageLink-Prefix.pch"; sourceTree = "<group>"; };
 		2C494EF31F8C95BB00034BB4 /* LLMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLMainController.h; sourceTree = "<group>"; };
 		2C494EF41F8C95BB00034BB4 /* LLMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLMainController.m; sourceTree = "<group>"; };
+		2C4C212C1F91B4AF0055516C /* LLBlockDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLBlockDefine.h; sourceTree = "<group>"; };
 		2CF9F5131F8CB47E004DE18F /* CTAssetsPageViewController+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTAssetsPageViewController+Internal.h"; sourceTree = "<group>"; };
 		2CF9F5141F8CB47E004DE18F /* CTAssetsPickerController+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTAssetsPickerController+Internal.h"; sourceTree = "<group>"; };
 		2CF9F5151F8CB47E004DE18F /* NSBundle+CTAssetsPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+CTAssetsPickerController.h"; sourceTree = "<group>"; };
@@ -315,6 +316,7 @@
 		2C494ED31F8C91FB00034BB4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2C4C212C1F91B4AF0055516C /* LLBlockDefine.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
