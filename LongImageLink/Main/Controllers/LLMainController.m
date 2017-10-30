@@ -12,6 +12,7 @@
 #import "UIView+Toast.h"
 #import "M80MainInteractor.h"
 #import "M80ImageGenerator.h"
+#import "LLMergeToolController.h"
 
 @interface LLMainController ()<M80MainIteractorDelegate>
 @property (strong, nonatomic) UIButton *okButton;
@@ -120,10 +121,12 @@
 {
     dispatch_block_t block = ^{
         
-        M80ImageViewController *vc = [[M80ImageViewController alloc] initWithImage:result.image];
-        vc.completion = result.completion;
-        
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//        M80ImageViewController *vc = [[M80ImageViewController alloc] initWithImage:result.image];
+//        vc.completion = result.completion;
+        LLMergeToolController *mer = [[LLMergeToolController alloc] init];
+        mer.postions = result.imagesPostion;
+        mer.images = [result.imagesArray mutableCopy];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mer];
         [self presentViewController:nav
                            animated:YES
                          completion:nil];
