@@ -9,6 +9,16 @@
 #ifndef LLBlockDefine_h
 #define LLBlockDefine_h
 
+
+/**
+ 显示图片的顺序枚举
+ */
+typedef NS_ENUM(NSInteger,LLImagePostion){
+    LLImagePostionTop,//最开始的图片
+    LLImagePostionMin,//中间的图片
+    LLImagePostionBottom//最后一张图片
+};
+
 /**
  获取图片和图片裁剪信息
  @param imagesArray 图片
